@@ -1,0 +1,22 @@
+.weather__card {
+  position: relative;
+  display: flex;
+}
+
+.weather__card-txt {
+  font-family: CabinetGrotesk, Arial, Helvetica, sans-serif;
+  font-size: 36px;
+  color: #ffffff;
+  font-weight: 700;
+  vertical-align: middle;
+  position: absolute;
+  margin: 0;
+  left: 16px;
+  top: 20px;
+}
+
+.weather__banner-img {
+  height: 80px;
+  border-radius: 12px;
+  width: 100%;
+}
