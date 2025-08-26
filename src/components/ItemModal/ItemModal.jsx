@@ -1,5 +1,4 @@
 import "./ItemModal.css";
-import exitIcon from "../../images/delete.svg";
 
 function ItemModal({ card, isOpen, onClose }) {
   return (
