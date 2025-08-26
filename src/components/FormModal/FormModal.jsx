@@ -1,6 +1,6 @@
 import "./FormModal.css";
 
-function FormModal({ children, isOpen, onClose, handleSubmit }) {
+function FormModal({ isOpen, onClose, handleSubmit }) {
   return (
     <div className={`form__modal ${isOpen ? "modal_is-opened" : ""}`}>
       <div className="form__modal-container">
@@ -11,7 +11,6 @@ function FormModal({ children, isOpen, onClose, handleSubmit }) {
           onClick={onClose}
         ></button>
         <form onSubmit={handleSubmit} className="form__modal-inputs">
-          {children}
           <label htmlFor="username" className="form__modal-label">
             Name
           </label>
