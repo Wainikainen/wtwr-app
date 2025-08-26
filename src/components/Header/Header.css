@@ -1,0 +1,44 @@
+.header {
+  display: flex;
+  margin-bottom: 28px;
+  align-items: center;
+}
+
+.header__logo {
+  padding-right: 24px;
+}
+
+.header__dateTime {
+  font-weight: 700;
+  font-size: 20px;
+  color: #000000;
+}
+
+.header__add-btn {
+  font-weight: 700;
+  font-size: 20px;
+  color: #000000;
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.header__user {
+  font-weight: 700;
+  font-size: 20px;
+  color: #000000;
+  padding-right: 12px;
+}
+
+.header__location {
+  font-weight: 700;
+  font-size: 20px;
+  color: #000000;
+}
+
+.header__user-img {
+  height: 40px;
+  width: 40px;
+}
