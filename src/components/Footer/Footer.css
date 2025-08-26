@@ -1,0 +1,18 @@
+.footer {
+  margin: 85px 0 0 0;
+  display: flex;
+  width: 1360px;
+}
+
+.footer__content {
+  font-weight: 500;
+  font-size: 16px;
+  margin: 0;
+  justify-content: space-between;
+}
+
+.footer__year {
+  font-weight: 500;
+  font-size: 16px;
+  margin-left: auto;
+}
