@@ -6,8 +6,8 @@ import CurrentTempScaleContext from "../../contexts/CurrentTempScaleContext";
 
 function Main({ clothingItems, handleOpenItemModal, weatherData }) {
   const { tempScale } = useContext(CurrentTempScaleContext);
-  const filterCards = clothingItems.filter(
-    (item) => item.weather === weatherData.condition
+  const filterCards = clothingItems.filter((item) =>
+    item.weather.includes(weatherData.tempCondition)
   );
 
   return (
