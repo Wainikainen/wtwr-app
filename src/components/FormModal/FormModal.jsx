@@ -1,6 +1,17 @@
 import "./FormModal.css";
+import { useState } from "react";
 
 function FormModal({ isOpen, onClose, handleSubmit }) {
+  const [image, setImage] = useState("");
+  const [imageError, setImageError] = useState("");
+
+  const handleImageChange = (e) => {
+    const value = e.target.value;
+    setImage(value);
+
+    const pattern = /^https?:\/\/.+$/i;
+    setImageError(value && !pattern.test(value) ? "Enter a valid URL" : "");
+  };
   return (
     <div className={`form__modal ${isOpen ? "modal_is-opened" : ""}`}>
       <div className="form__modal-container">
@@ -28,8 +39,10 @@ function FormModal({ isOpen, onClose, handleSubmit }) {
             className="form__modal-input"
             placeholder="Image URL"
             id="image"
+            value={image}
+            onChange={handleImageChange}
           />
-
+          {imageError && <p className="form__modal-error">{imageError}</p>}
           <fieldset className="form__modal-fieldset">
             <legend className="form__modal-legend">
               Select the weather type:

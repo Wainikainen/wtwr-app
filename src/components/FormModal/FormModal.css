@@ -60,15 +60,24 @@
 
 .form__modal-input {
   width: 440px;
-  border: 0px;
+  border: 1px;
   border-bottom: 1px solid black;
   padding-bottom: 4px;
+  height: 24px;
+}
+
+.form__modal-input:focus {
+  outline: 1px solid black;
 }
 
 .form__modal-label {
   font-weight: 700;
   font-size: 16px;
   margin: 24px 0 8px;
+}
+
+.form__modal-error {
+  margin: 15px 0 0;
 }
 
 .form__modal-fieldset {
@@ -90,6 +99,10 @@
   color: gray;
 }
 
+.form__modal-selection {
+  cursor: pointer;
+}
+
 .form__modal-selections .form__modal-selection:checked ~ .form__modal-choice {
   color: black;
 }
@@ -109,6 +122,7 @@
   background-color: rgba(0, 0, 0, 0.3);
   border: none;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .form__modal-submit:hover {
