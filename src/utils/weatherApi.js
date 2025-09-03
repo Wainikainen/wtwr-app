@@ -17,7 +17,10 @@ function readWeatherData(data) {
   readData.city = data.name;
   readData.temp.F = Math.round(data.main.temp);
   readData.temp.C = Math.round(((data.main.temp - 32) * 5) / 9);
-  readData.condition = getWeatherCondition(readData.temp.F);
+  readData.tempCondition = getWeatherCondition(readData.temp.F);
+  readData.weatherType = data.weather[0].main;
+  readData.sunrise = data.sys.sunrise;
+  readData.sunset = data.sys.sunset;
   return readData;
 }
 
