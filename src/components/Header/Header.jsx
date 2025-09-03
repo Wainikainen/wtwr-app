@@ -1,8 +1,9 @@
 import logo from "../../images/logo.svg";
 import userLogo from "../../images/avatar.svg";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import "./Header.css";
 
-function Header({ handleAddGarmentModal }) {
+function Header({ handleAddGarmentModal, weatherData }) {
   const now = new Date();
   const dateStr = now.toLocaleDateString("default", {
     month: "long",
@@ -16,8 +17,9 @@ function Header({ handleAddGarmentModal }) {
         <time dateTime={now} className="header__dateTime">
           {dateStr}
         </time>
-        , Chicago
+        , {weatherData.city}
       </p>
+      <ToggleSwitch />
       <button onClick={handleAddGarmentModal} className="header__add-btn">
         + Add Clothes
       </button>
