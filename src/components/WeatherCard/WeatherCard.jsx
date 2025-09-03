@@ -18,18 +18,32 @@ function WeatherCard({ weatherData }) {
   const { tempScale } = useContext(CurrentTempScaleContext);
   const now = Date.now() / 1000;
   const isDay = now >= weatherData.sunrise && now <= weatherData.sunset;
- 
 
-
-
-
-
-
-
-
-
-
-  
+  let weatherImage;
+  switch (weatherData.weatherType) {
+    case "Clear":
+      weatherImage = isDay ? sunnyDay : sunnyNight;
+      break;
+    case "Clouds":
+      weatherImage = isDay ? cloudyDay : cloudyNight;
+      break;
+    case "Snow":
+      weatherImage = isDay ? snowDay : snowNight;
+      break;
+    case "Rain":
+    case "Drizzle":
+      weatherImage = isDay ? rainDay : rainNight;
+      break;
+    case "Fog":
+    case "Mist":
+      weatherImage = isDay ? fogDay : fogNight;
+      break;
+    case "Thunderstorm":
+      weatherImage = isDay ? stormDay : stormNight;
+      break;
+    default:
+      weatherImage = isDay ? cloudyDay : cloudyNight;
+  }
 
   return (
     <div className="weather__card">
