@@ -1,0 +1,21 @@
+.sidebar {
+  margin-top: 19px;
+  min-width: 229px;
+}
+
+.sidebar__row {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 16px;
+  place-self: flex-start;
+}
+
+.sidebar__user {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sidebar__user-img {
+  width: 56px;
+  height: 56px;
+}
