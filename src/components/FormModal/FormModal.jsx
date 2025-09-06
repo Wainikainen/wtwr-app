@@ -1,17 +1,35 @@
 import "./FormModal.css";
 import { useState } from "react";
+import { validationImageUrl } from "../../utils/validation";
+import { useForm } from "../../hooks/useForm";
 
 function FormModal({ isOpen, onClose, handleSubmit }) {
+  const { values, handleChange, resetForm } = useForm({
+    name: "",
+    weatherType: "hot",
+  });
   const [image, setImage] = useState("");
   const [imageError, setImageError] = useState("");
 
   const handleImageChange = (e) => {
     const value = e.target.value;
     setImage(value);
-
-    const pattern = /^https?:\/\/.+$/i;
-    setImageError(value && !pattern.test(value) ? "Enter a valid URL" : "");
+    setImageError(validationImageUrl(value));
   };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (imageError) return;
+    handleSubmit({
+      name: values.name,
+      image: image,
+      weatherType: values.weatherType,
+    });
+    resetForm();
+    setImage("");
+    setImageError("");
+  };
+
   return (
     <div className={`form__modal ${isOpen ? "modal_is-opened" : ""}`}>
       <div className="form__modal-container">
@@ -21,7 +39,7 @@ function FormModal({ isOpen, onClose, handleSubmit }) {
           className="form__modal-close"
           onClick={onClose}
         ></button>
-        <form onSubmit={handleSubmit} className="form__modal-inputs">
+        <form onSubmit={handleFormSubmit} className="form__modal-inputs">
           <label htmlFor="username" className="form__modal-label">
             Name
           </label>
@@ -30,6 +48,9 @@ function FormModal({ isOpen, onClose, handleSubmit }) {
             className="form__modal-input"
             placeholder="Name"
             id="username"
+            value={values.name}
+            name="name"
+            onChange={handleChange}
           />
           <label htmlFor="image" className="form__modal-label">
             Image
@@ -39,6 +60,7 @@ function FormModal({ isOpen, onClose, handleSubmit }) {
             className="form__modal-input"
             placeholder="Image URL"
             id="image"
+            name="image"
             value={image}
             onChange={handleImageChange}
           />
@@ -55,7 +77,8 @@ function FormModal({ isOpen, onClose, handleSubmit }) {
                 id="hot"
                 name="weatherType"
                 value="hot"
-                defaultChecked
+                checked={values.weatherType === "hot"}
+                onChange={handleChange}
               />
               <label className="form__modal-choice" htmlFor="hot">
                 Hot
@@ -69,6 +92,8 @@ function FormModal({ isOpen, onClose, handleSubmit }) {
                 id="warm"
                 name="weatherType"
                 value="warm"
+                onChange={handleChange}
+                checked={values.weatherType == "warm"}
               />
               <label className="form__modal-choice" htmlFor="warm">
                 Warm
@@ -82,16 +107,18 @@ function FormModal({ isOpen, onClose, handleSubmit }) {
                 id="cold"
                 name="weatherType"
                 value="cold"
+                onChange={handleChange}
+                checked={values.weatherType === "cold"}
               />
               <label className="form__modal-choice" htmlFor="cold">
                 Cold
               </label>
             </div>
           </fieldset>
+          <button type="submit" className="form__modal-submit">
+            Add garment
+          </button>
         </form>
-        <button type="submit" className="form__modal-submit">
-          Add garment
-        </button>
       </div>
     </div>
   );
