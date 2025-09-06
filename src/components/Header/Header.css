@@ -41,3 +41,10 @@
   height: 40px;
   width: 40px;
 }
+
+.header__link-profile {
+  display: flex;
+  text-decoration: none;
+  color: #000000;
+  align-items: center;
+}
