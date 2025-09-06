@@ -1,6 +1,6 @@
 //had to have this file for robot check will remove after
 import React from 'react';
-import './ModalWithForm.css';
+import './ModalWIthForm.css';
 
 const ModalWithForm = () => {
   return (
