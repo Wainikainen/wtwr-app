@@ -6,7 +6,7 @@ import { validationImageUrl } from "../../utils/validation";
 const AddItemModal = ({ isOpen, handleSubmit, onClose }) => {
   const { values, handleChange, resetForm } = useForm({
     name: "",
-    weatherType: "hot",
+    weather: "hot",
   });
   const [image, setImage] = useState("");
   const [imageError, setImageError] = useState("");
@@ -22,8 +22,8 @@ const AddItemModal = ({ isOpen, handleSubmit, onClose }) => {
     if (imageError) return;
     handleSubmit({
       name: values.name,
-      image: image,
-      weatherType: values.weatherType,
+      imageUrl: image,
+      weather: values.weather,
     });
     resetForm();
     setImage("");
@@ -75,9 +75,9 @@ const AddItemModal = ({ isOpen, handleSubmit, onClose }) => {
                 className="addItemModal-selection"
                 type="radio"
                 id="hot"
-                name="weatherType"
+                name="weather"
                 value="hot"
-                checked={values.weatherType === "hot"}
+                checked={values.weather === "hot"}
                 onChange={handleChange}
               />
               <label className="addItemModal-choice" htmlFor="hot">
@@ -90,10 +90,10 @@ const AddItemModal = ({ isOpen, handleSubmit, onClose }) => {
                 className="addItemModal-selection"
                 type="radio"
                 id="warm"
-                name="weatherType"
+                name="weather"
                 value="warm"
                 onChange={handleChange}
-                checked={values.weatherType === "warm"}
+                checked={values.weather === "warm"}
               />
               <label className="addItemModal-choice" htmlFor="warm">
                 Warm
@@ -105,10 +105,10 @@ const AddItemModal = ({ isOpen, handleSubmit, onClose }) => {
                 className="addItemModal-selection"
                 type="radio"
                 id="cold"
-                name="weatherType"
+                name="weather"
                 value="cold"
                 onChange={handleChange}
-                checked={values.weatherType === "cold"}
+                checked={values.weather === "cold"}
               />
               <label className="addItemModal-choice" htmlFor="cold">
                 Cold

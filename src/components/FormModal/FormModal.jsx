@@ -6,7 +6,7 @@ import { useForm } from "../../hooks/useForm";
 function FormModal({ isOpen, onClose, handleSubmit }) {
   const { values, handleChange, resetForm } = useForm({
     name: "",
-    weatherType: "hot",
+    weather: "hot",
   });
   const [image, setImage] = useState("");
   const [imageError, setImageError] = useState("");
@@ -22,8 +22,8 @@ function FormModal({ isOpen, onClose, handleSubmit }) {
     if (imageError) return;
     handleSubmit({
       name: values.name,
-      image: image,
-      weatherType: values.weatherType,
+      imageUrl: image,
+      weather: values.weather,
     });
     resetForm();
     setImage("");
@@ -75,9 +75,9 @@ function FormModal({ isOpen, onClose, handleSubmit }) {
                 className="form__modal-selection"
                 type="radio"
                 id="hot"
-                name="weatherType"
+                name="weather"
                 value="hot"
-                checked={values.weatherType === "hot"}
+                checked={values.weather === "hot"}
                 onChange={handleChange}
               />
               <label className="form__modal-choice" htmlFor="hot">
@@ -90,10 +90,10 @@ function FormModal({ isOpen, onClose, handleSubmit }) {
                 className="form__modal-selection"
                 type="radio"
                 id="warm"
-                name="weatherType"
+                name="weather"
                 value="warm"
                 onChange={handleChange}
-                checked={values.weatherType == "warm"}
+                checked={values.weather == "warm"}
               />
               <label className="form__modal-choice" htmlFor="warm">
                 Warm
@@ -105,10 +105,10 @@ function FormModal({ isOpen, onClose, handleSubmit }) {
                 className="form__modal-selection"
                 type="radio"
                 id="cold"
-                name="weatherType"
+                name="weather"
                 value="cold"
                 onChange={handleChange}
-                checked={values.weatherType === "cold"}
+                checked={values.weather === "cold"}
               />
               <label className="form__modal-choice" htmlFor="cold">
                 Cold
