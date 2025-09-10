@@ -1,13 +1,13 @@
 import React from 'react';
 import './addItemModal.css';
 
-const addItemModal = () => {
+const AddItemModal = () => {
   return (
     <div>addItemModal</div>
   )
 }
 
-export default addItemModal
+export default AddItemModal
 
 
 
