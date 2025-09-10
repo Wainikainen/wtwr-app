@@ -1,7 +1,7 @@
 .footer {
   margin: 85px 0 0 0;
   display: flex;
-  width: 1360px;
+  max-width: 1360px;
 }
 
 .footer__content {

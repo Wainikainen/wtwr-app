@@ -10,7 +10,6 @@ import Footer from "../Footer/Footer";
 import FormModal from "../FormModal/FormModal";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
-import AddItemModal from "../AddItemModal/AddItemModal";
 import DeleteModal from "../OpenConfirmationModal/DeleteModal";
 import {
   getClothingItems,
@@ -151,11 +150,6 @@ function App() {
           onClose={handleCloseModal}
           handleSubmit={handleClothingItems}
         />
-        <AddItemModal
-          isOpen={activeModal === "add-garment-modal"}
-          onClose={handleCloseModal}
-          handleSubmit={handleClothingItems}
-        ></AddItemModal>
         <DeleteModal
           card={selectedCard}
           isOpen={activeModal === "delete-modal"}
