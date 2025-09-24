@@ -1,8 +1,18 @@
-# React + Vite
+# WTWR
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+WTWR is a web application that allows users to manage and organize their clothing items, create outfits, and maintain a personal wardrobe online. It features user authentication, profile management, and an intuitive interface for adding, viewing, and deleting clothing items.
 
-Currently, two official plugins are available:
+## Features
+- User sign-up, sign-in, and sign-out
+- Profile management
+- Add, edit, and delete clothing items
+- View items in a categorized wardrobe layout
+- Responsive design for desktop and mobile
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+- Frontend: React, JavaScript, CSS
+- Backend: Node.js, Express, MongoDB (link below)
+
+## Backend Repository
+The backend for this project can be found at [here](git@github.com:Wainikainen/se_project_express.git)
+
