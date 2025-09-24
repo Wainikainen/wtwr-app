@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3001";
+export const baseUrl = "http://localhost:3001";
 
 function getClothingItems() {
   return fetch(`${baseUrl}/items`).then((res) => {
