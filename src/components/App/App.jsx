@@ -4,7 +4,6 @@ import "./App.css";
 import CurrentTempScaleContext from "../../contexts/CurrentTempScaleContext";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import { defaultClothingItems } from "../../utils/defaultClothingItems";
 import { getWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
 import FormModal from "../FormModal/FormModal";
@@ -16,6 +15,10 @@ import {
   addClothingItem,
   deleteClothingItem,
 } from "../../utils/api";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import { getUser, validateToken } from "../../utils/auth";
+
 
 function App() {
   const [clothingItems, setClothingItems] = useState([]);
@@ -23,6 +26,9 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [weatherData, setWeatherData] = useState({ name: "", temp: "0" });
   const [tempScale, setTempScale] = useState("F");
+  const [currentUser, setCurrentUser] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 
   function handleOpenItemModal(card) {
     setActiveModal("item-modal");
@@ -92,8 +98,8 @@ function App() {
           activeModal === "item-modal"
             ? "item__modal-container"
             : activeModal === "add-garment-modal"
-            ? "form__modal-container" //for some reason i cant figure out why //
-            : "deleteModal__container" //form modal is not closing on click outside //
+            ? "form__modal-container" 
+            : "deleteModal__container" 
         }`
       );
       if (
@@ -107,8 +113,28 @@ function App() {
     return () => document.removeEventListener("click", handleClickOutside);
   }, [activeModal]);
 
+  useEffect(() => {
+    const token = localStorage.getItem("jwt")
+
+    if(token) {
+       validateToken(token)
+       .then(() => {
+        return getUser(token)
+       })
+      .then((user) => {
+        setCurrentUser(user)
+        setIsLoggedIn(true)
+      })
+      .catch(() => {
+        setIsLoggedIn(false)
+        localStorage.removeItem("jwt")
+      });
+    }
+  }, [])
+
   return (
     <CurrentTempScaleContext.Provider value={{ tempScale, handleScaleChange }}>
+      <CurrentUserContext.Provider value={{currentUser, setCurrentUser}}>
       <div className="app">
         <Header
           weatherData={weatherData}
@@ -125,18 +151,20 @@ function App() {
                 handleDeleteModal={handleDeleteModal}
               />
             }
-          ></Route>
+          />
           <Route
             path="/profile"
             element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
               <Profile
                 clothingItems={clothingItems}
                 handleOpenItemModal={handleOpenItemModal}
                 handleAddGarmentModal={handleAddGarmentModal}
                 handleDeleteModal={handleDeleteModal}
               />
+              </ProtectedRoute>
             }
-          ></Route>
+          />
         </Routes>
         <Footer />
         <ItemModal
@@ -157,6 +185,7 @@ function App() {
           handleDelete={handleDelete}
         />
       </div>
+      </CurrentUserContext.Provider>
     </CurrentTempScaleContext.Provider>
   );
 }
