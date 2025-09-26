@@ -7,10 +7,12 @@ function getClothingItems() {
 }
 
 function addClothingItem(newItem) {
+  const token = localStorage.getItem("jwt");
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(newItem),
   }).then((res) =>
@@ -19,11 +21,30 @@ function addClothingItem(newItem) {
 }
 
 function deleteClothingItem(id) {
+  const token = localStorage.getItem("jwt");
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
   }).then((res) =>
     res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
   );
 }
 
-export { getClothingItems, addClothingItem, deleteClothingItem };
+function editProfile(data) {
+  const token = localStorage.getItem("jwt");
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  }).then((res) =>
+    res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+  );
+}
+
+export { getClothingItems, addClothingItem, deleteClothingItem, editProfile };
