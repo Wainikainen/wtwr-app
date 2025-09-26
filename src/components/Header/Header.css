@@ -48,3 +48,41 @@
   color: #000000;
   align-items: center;
 }
+
+.header__signUp {
+  font-weight: 700;
+  font-size: 20px;
+  color: #000000;
+  background: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0px;
+}
+
+.header__logIn {
+  font-weight: 700;
+  font-size: 20px;
+  color: #000000;
+   background: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0px;
+  margin-left: 20px;
+}
+
+.header__link-error{
+background-color: rgba(0, 128, 255, 0.913);
+border-radius: 50%;
+width: 40px;
+display: flex;
+justify-content: center;
+height: 40px;
+align-items: center;
+}
+
+.header__link-error-name{
+  font-size: 20px;
+  font-weight: 700;
+}
