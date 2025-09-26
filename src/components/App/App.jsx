@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import CurrentTempScaleContext from "../../contexts/CurrentTempScaleContext";
 import Header from "../Header/Header";
@@ -16,8 +16,12 @@ import {
   deleteClothingItem,
 } from "../../utils/api";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import { getUser, validateToken } from "../../utils/auth";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
+import {  validateToken, login, signUp } from "../../utils/auth";
+import LoginModal from "../LoginModal/LoginModal";
+import RegisterModal from "../RegisterModal/RegisterModal.jsx";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
+
 
 
 function App() {
@@ -28,7 +32,7 @@ function App() {
   const [tempScale, setTempScale] = useState("F");
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const navigate = useNavigate();
 
   function handleOpenItemModal(card) {
     setActiveModal("item-modal");
@@ -73,6 +77,40 @@ function App() {
     });
   }
 
+  function handleLoginModal() {
+  setActiveModal("login-modal");
+  }
+
+  function handleSignUpModal() {
+    setActiveModal("register-modal");
+  }
+
+function handleRegister(values, callback) {
+  signUp(values)
+  .then((values) => {
+    return login ({ email: values.email, password: values.password })
+    .then((data) => {
+      localStorage.setItem("jwt", data.token);
+      return validateToken(data.token).then((newUser) => {
+        callback(newUser)
+      })
+    })
+  })
+  .catch(console.error);
+}
+
+
+  function handleSignOut () {
+    localStorage.removeItem("jwt");
+    setCurrentUser({});
+    setIsLoggedIn(false);
+    navigate("/");
+    }
+
+    function handleEditProfileModal () { 
+      setActiveModal("edit-profile-modal")
+    }
+
   useEffect(() => {
     getWeatherData()
       .then((data) => {
@@ -85,42 +123,26 @@ function App() {
     getClothingItems().then((data) => setClothingItems(data));
   }, []);
 
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      const modalClass =
-        activeModal === "item-modal"
-          ? "item__modal"
-          : activeModal === "add-garment-modal"
-          ? "form__modal"
-          : "deleteModal";
-      const modal = document.querySelector(
-        `.${
-          activeModal === "item-modal"
-            ? "item__modal-container"
-            : activeModal === "add-garment-modal"
-            ? "form__modal-container" 
-            : "deleteModal__container" 
-        }`
-      );
-      if (
-        modal &&
-        e.target.closest(`.${modalClass}`) &&
-        !modal.contains(e.target)
-      )
-        handleCloseModal();
-    };
-    if (activeModal) document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, [activeModal]);
+ useEffect(() => {
+  const handleClickOutside = (e) => {
+    const openedModal = document.querySelector(".modal_is-opened");
+    if (!openedModal) return;
+
+    const container = openedModal.querySelector("div"); // the inner modal container
+    if (container && !container.contains(e.target)) {
+      handleCloseModal();
+    }
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+  return () => document.removeEventListener("mousedown", handleClickOutside);
+}, [activeModal]);
 
   useEffect(() => {
     const token = localStorage.getItem("jwt")
 
     if(token) {
        validateToken(token)
-       .then(() => {
-        return getUser(token)
-       })
       .then((user) => {
         setCurrentUser(user)
         setIsLoggedIn(true)
@@ -134,11 +156,13 @@ function App() {
 
   return (
     <CurrentTempScaleContext.Provider value={{ tempScale, handleScaleChange }}>
-      <CurrentUserContext.Provider value={{currentUser, setCurrentUser}}>
+      <CurrentUserContext.Provider value={{currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn}}>
       <div className="app">
         <Header
           weatherData={weatherData}
           handleAddGarmentModal={handleAddGarmentModal}
+          handleLoginModal={handleLoginModal}
+          handleSignUpModal={handleSignUpModal}
         />
         <Routes>
           <Route
@@ -155,12 +179,14 @@ function App() {
           <Route
             path="/profile"
             element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <ProtectedRoute>
               <Profile
                 clothingItems={clothingItems}
+                handleEditProfileModal={handleEditProfileModal}
                 handleOpenItemModal={handleOpenItemModal}
                 handleAddGarmentModal={handleAddGarmentModal}
                 handleDeleteModal={handleDeleteModal}
+                handleSignOut={handleSignOut}
               />
               </ProtectedRoute>
             }
@@ -183,6 +209,22 @@ function App() {
           isOpen={activeModal === "delete-modal"}
           onClose={handleCloseModal}
           handleDelete={handleDelete}
+        />
+        <LoginModal
+        isOpen={activeModal === "login-modal"}
+        onClose={handleCloseModal}
+        handleLoginModal={handleLoginModal}
+        handleSignUpModal={handleSignUpModal}
+        />
+        <RegisterModal
+        isOpen={activeModal === "register-modal"}
+        onClose={handleCloseModal}
+        handleRegister={handleRegister}
+        handleLoginModal={handleLoginModal}
+        />
+        <EditProfileModal
+          isOpen={activeModal ===  "edit-profile-modal" }
+          onClose={handleCloseModal}
         />
       </div>
       </CurrentUserContext.Provider>
