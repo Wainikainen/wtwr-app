@@ -3,11 +3,11 @@ import { Navigate } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ProtectedRoute ({ children }) {
-    const { currentUser } = useContext(CurrentUserContext);
-    if(!currentUser || !localStorage.getItem("jwt")) {
+    const { isLoggedIn } = useContext(CurrentUserContext);
+    if(!isLoggedIn) {
         return <Navigate to="/"/>;
     }
-    return children;
+    return <>{children}</>;
 }
 
 export default ProtectedRoute;
