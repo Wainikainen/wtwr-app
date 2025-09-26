@@ -1,0 +1,137 @@
+.editProfile__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s linear, visibility 0s linear 0.5s;
+}
+
+.editProfile__modal.modal_is-opened {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s linear;
+}
+
+.editProfile__modal-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  height: 304px;
+  width: 496px;
+  border-radius: 20px;
+  position: relative;
+  padding: 28px;
+  box-sizing: border-box;
+}
+
+.editProfile__modal-title {
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0;
+}
+
+.editProfile__modal-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background-image: url(../../images/delete.svg);
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+.editProfile__modal-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.editProfile__modal-input {
+  width: 440px;
+  border: 1px;
+  border-bottom: 1px solid black;
+  padding-bottom: 4px;
+  height: 24px;
+  padding-left: 0px;
+}
+
+.editProfile__modal-input:focus {
+  outline: none;
+}
+
+.editProfile__modal-label {
+  font-weight: 700;
+  font-size: 16px;
+  margin: 24px 0 8px;
+}
+
+.editProfile__modal-error {
+  margin: 15px 0 0;
+}
+
+.editProfile__modal-fieldset {
+  padding: 0;
+  margin: 24px 0 32px;
+  border: none;
+}
+
+.editProfile__modal-legend {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.editProfile__modal-selections {
+  font-size: 16px;
+  font-weight: 700;
+  padding-bottom: 8px;
+  color: gray;
+}
+
+.editProfile__modal-selection {
+  cursor: pointer;
+}
+
+.editProfile__modal-selections .editProfile__modal-selection:checked ~ .editProfile__modal-choice {
+  color: black;
+}
+
+.editProfile__modal-choice {
+  padding-left: 8px;
+}
+
+
+
+.editProfile__modal-save {
+  width: 128px;
+  height: 36px;
+  bottom: 36px;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 700;
+  background-color: #000000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.editProfile__modal-save:disabled {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
