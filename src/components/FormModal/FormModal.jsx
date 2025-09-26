@@ -4,10 +4,11 @@ import { validationImageUrl } from "../../utils/validation";
 import { useForm } from "../../hooks/useForm";
 
 function FormModal({ isOpen, onClose, handleSubmit }) {
-  const { values, handleChange, resetForm } = useForm({
+  const { values, handleChange, resetForm, isValid, formRef } = useForm({
     name: "",
     weather: "hot",
   });
+
   const [image, setImage] = useState("");
   const [imageError, setImageError] = useState("");
 
@@ -39,7 +40,7 @@ function FormModal({ isOpen, onClose, handleSubmit }) {
           className="form__modal-close"
           onClick={onClose}
         ></button>
-        <form onSubmit={handleFormSubmit} className="form__modal-inputs">
+        <form  ref={formRef} onSubmit={handleFormSubmit} className="form__modal-inputs">
           <label htmlFor="username" className="form__modal-label">
             Name
           </label>
@@ -51,6 +52,7 @@ function FormModal({ isOpen, onClose, handleSubmit }) {
             value={values.name}
             name="name"
             onChange={handleChange}
+            required
           />
           <label htmlFor="image" className="form__modal-label">
             Image
@@ -63,6 +65,7 @@ function FormModal({ isOpen, onClose, handleSubmit }) {
             name="image"
             value={image}
             onChange={handleImageChange}
+            required
           />
           {imageError && <p className="form__modal-error">{imageError}</p>}
           <fieldset className="form__modal-fieldset">
@@ -79,6 +82,7 @@ function FormModal({ isOpen, onClose, handleSubmit }) {
                 value="hot"
                 checked={values.weather === "hot"}
                 onChange={handleChange}
+                required
               />
               <label className="form__modal-choice" htmlFor="hot">
                 Hot
@@ -94,6 +98,7 @@ function FormModal({ isOpen, onClose, handleSubmit }) {
                 value="warm"
                 onChange={handleChange}
                 checked={values.weather == "warm"}
+                required
               />
               <label className="form__modal-choice" htmlFor="warm">
                 Warm
@@ -109,13 +114,14 @@ function FormModal({ isOpen, onClose, handleSubmit }) {
                 value="cold"
                 onChange={handleChange}
                 checked={values.weather === "cold"}
+                required
               />
               <label className="form__modal-choice" htmlFor="cold">
                 Cold
               </label>
             </div>
           </fieldset>
-          <button type="submit" className="form__modal-submit">
+          <button  disabled={!isValid} type="submit" className="form__modal-submit">
             Add garment
           </button>
         </form>

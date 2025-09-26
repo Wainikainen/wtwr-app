@@ -67,7 +67,7 @@
 }
 
 .form__modal-input:focus {
-  outline: 1px solid black;
+  outline: none
 }
 
 .form__modal-label {
@@ -119,12 +119,12 @@
   font-size: 16px;
   color: #ffffff;
   font-weight: 700;
-  background-color: rgba(0, 0, 0, 0.3);
+   background-color: #000000;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.form__modal-submit:hover {
-  background-color: #000000;
+.form__modal-submit:disabled{
+   background-color: rgba(0, 0, 0, 0.3);
 }
