@@ -8,6 +8,7 @@
   flex-direction: row-reverse;
   gap: 16px;
   place-self: flex-start;
+  align-items: center;
 }
 
 .sidebar__user {
@@ -18,4 +19,43 @@
 .sidebar__user-img {
   width: 56px;
   height: 56px;
+}
+
+.sidebar__img-error{
+background-color: rgba(0, 128, 255, 0.913);
+border-radius: 50%;
+width: 50px;
+display: flex;
+justify-content: center;
+height: 50px;
+align-items: center;
+}
+
+.sidebar__img-error-name{
+font-size: 20px;
+font-weight: 700;
+}
+
+.sidebar__btns{
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.sidebar__edit{
+border: none;
+background-color: transparent;
+font-size: 20px;
+font-weight: 700;
+cursor: pointer;
+}
+
+.sidebar__signOut{
+border: none;
+background-color: transparent;
+font-size: 20px;
+font-weight: 700;
+cursor: pointer;
 }
