@@ -1,0 +1,158 @@
+.register__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s linear, visibility 0s linear 0.5s;
+}
+
+.register__modal.modal_is-opened {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s linear;
+}
+
+.register__modal-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  height: 456px;
+  width: 496px;
+  border-radius: 20px;
+  position: relative;
+  padding: 28px;
+  box-sizing: border-box;
+}
+
+.register__modal-title {
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0;
+}
+
+.register__modal-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background-image: url(../../images/delete.svg);
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+.register__modal-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.register__modal-input {
+  width: 440px;
+  border: 1px;
+  border-bottom: 1px solid black;
+  padding-bottom: 4px;
+  height: 24px;
+  padding-left: 0px;
+}
+
+.register__modal-input:focus {
+  outline: 1px solid black;
+}
+
+.register__modal-label {
+  font-weight: 700;
+  font-size: 16px;
+  margin: 24px 0 8px;
+}
+
+.register__modal-error {
+  margin: 15px 0 0;
+}
+
+.register__modal-fieldset {
+  padding: 0;
+  margin: 24px 0 32px;
+  border: none;
+}
+
+.register__modal-legend {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.register__modal-selections {
+  font-size: 16px;
+  font-weight: 700;
+  padding-bottom: 8px;
+  color: gray;
+}
+
+.register__modal-selection {
+  cursor: pointer;
+}
+
+.register__modal-selections .register__modal-selection:checked ~ .register__modal-choice {
+  color: black;
+}
+
+.register__modal-choice {
+  padding-left: 8px;
+}
+
+.register__modal-btns {
+    position: absolute;
+    display: flex;
+    gap: 12px;
+    bottom: 0px;
+
+}
+
+.register__modal-signUp {
+  width: 74px;
+  height: 36px;
+  bottom: 36px;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 700;
+  background-color: #000000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+.register__modal-signUp:disabled {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.register__modal-logIn {
+    width: 73px;
+  height: 36px;
+  bottom: 36px;
+  font-size: 16px;
+  color: #000000;
+  opacity: .5;
+  background-color: transparent;
+  font-weight: 700;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+.register__modal-submit:hover {
+  background-color: #000000;
+}
