@@ -1,5 +1,10 @@
 .card {
   position: relative;
+  width: 323px;
+}
+
+.card__container {
+  display: flex;
 }
 
 .card__title {
@@ -14,7 +19,8 @@
   height: 24px;
   border-radius: 4px;
   justify-self: anchor-center;
-  text-align: center;
+  align-content: center;
+  height: 20px;
 }
 
 .card__img {
@@ -22,4 +28,28 @@
   width: 323px;
   height: 328px;
   border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.card__like-btn,
+.card__like-btn_active {
+  width: 18px;
+  height: 15px;
+  position: absolute;
+  cursor: pointer;
+  top: 17px;
+  right: 100px;
+  border: none;
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.card__like-btn {
+  background-image: url(../../images/unlike-button.svg);
+}
+
+.card__like-btn_active {
+  background-image: url(../../images/like-button.svg);
+  background-color: #000000;
 }

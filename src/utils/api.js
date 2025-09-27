@@ -47,4 +47,35 @@ function editProfile(data) {
   );
 }
 
-export { getClothingItems, addClothingItem, deleteClothingItem, editProfile };
+function addCardLike(itemId) {
+  const token = localStorage.getItem("jwt");
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  }).then((res) =>
+    res.ok ? res.json() : Promise.reject(`Error${res.status}`)
+  );
+}
+
+function removeCardLike(itemId) {
+  const token = localStorage.getItem("jwt");
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  }).then((res) => (res.ok ? res.json : Promise.reject(`Error ${res.status}`)));
+}
+
+export {
+  getClothingItems,
+  addClothingItem,
+  deleteClothingItem,
+  editProfile,
+  addCardLike,
+  removeCardLike,
+};
