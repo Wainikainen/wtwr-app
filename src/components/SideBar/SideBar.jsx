@@ -1,8 +1,8 @@
-import  { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./SideBar.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-const SideBar = ({handleSignOut, handleEditProfileModal}) => {
+const SideBar = ({ handleSignOut, handleEditProfileModal }) => {
   const { currentUser } = useContext(CurrentUserContext);
   const [imageError, setImageError] = useState(false);
 
@@ -16,7 +16,9 @@ const SideBar = ({handleSignOut, handleEditProfileModal}) => {
         <p className="sidebar__user">{currentUser?.name}</p>
         {imageError ? (
           <div className="sidebar__img-error">
-            <p className="sidebar__img-error-name">{currentUser?.name?.charAt(0)}</p>
+            <p className="sidebar__img-error-name">
+              {currentUser?.name?.charAt(0)}
+            </p>
           </div>
         ) : (
           <img
@@ -29,12 +31,14 @@ const SideBar = ({handleSignOut, handleEditProfileModal}) => {
           />
         )}
       </div>
-        <div className="sidebar__btns">
-          <button onClick={handleEditProfileModal}  className="sidebar__edit">Edit profile</button>
-          <button onClick={handleSignOut} className="sidebar__signOut">
-            Sign out
-          </button>
-        </div>
+      <div className="sidebar__btns">
+        <button onClick={handleEditProfileModal} className="sidebar__edit">
+          Edit profile
+        </button>
+        <button onClick={handleSignOut} className="sidebar__signOut">
+          Sign out
+        </button>
+      </div>
     </aside>
   );
 };

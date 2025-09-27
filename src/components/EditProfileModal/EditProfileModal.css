@@ -104,15 +104,15 @@
   cursor: pointer;
 }
 
-.editProfile__modal-selections .editProfile__modal-selection:checked ~ .editProfile__modal-choice {
+.editProfile__modal-selections
+  .editProfile__modal-selection:checked
+  ~ .editProfile__modal-choice {
   color: black;
 }
 
 .editProfile__modal-choice {
   padding-left: 8px;
 }
-
-
 
 .editProfile__modal-save {
   width: 128px;
@@ -134,4 +134,3 @@
 .editProfile__modal-save:disabled {
   background-color: rgba(0, 0, 0, 0.3);
 }
-

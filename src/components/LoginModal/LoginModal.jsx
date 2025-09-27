@@ -1,11 +1,11 @@
 import "./LoginModal.css";
-import { useContext} from "react";
+import { useContext } from "react";
 import { useForm } from "../../hooks/useForm";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { login, validateToken } from "../../utils/auth";
 
 function LoginModal({ isOpen, onClose, handleRegister }) {
-  const { resetForm, values, handleChange,isValid, formRef } = useForm({
+  const { resetForm, values, handleChange, isValid, formRef } = useForm({
     email: "",
     password: "",
   });
@@ -15,7 +15,7 @@ function LoginModal({ isOpen, onClose, handleRegister }) {
   const handleClose = () => {
     resetForm();
     onClose();
-  }
+  };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -23,12 +23,11 @@ function LoginModal({ isOpen, onClose, handleRegister }) {
       .then((data) => {
         if (data.token) {
           localStorage.setItem("jwt", data.token);
-          validateToken(data.token)
-          .then((user) => {
-    setCurrentUser(user);
-          setIsLoggedIn(true);
-          resetForm();
-          handleClose()
+          validateToken(data.token).then((user) => {
+            setCurrentUser(user);
+            setIsLoggedIn(true);
+            resetForm();
+            handleClose();
           });
         }
       })
@@ -44,7 +43,11 @@ function LoginModal({ isOpen, onClose, handleRegister }) {
           className="login__modal-close"
           onClick={handleClose}
         ></button>
-        <form ref={formRef} onSubmit={handleFormSubmit} className="login__modal-inputs">
+        <form
+          ref={formRef}
+          onSubmit={handleFormSubmit}
+          className="login__modal-inputs"
+        >
           <label htmlFor="username" className="login__modal-label">
             Email
           </label>
@@ -72,10 +75,18 @@ function LoginModal({ isOpen, onClose, handleRegister }) {
             required
           />
           <div className="login__modal-btns">
-            <button  disabled={!isValid} type="submit" className="login__modal-logIn">
+            <button
+              disabled={!isValid}
+              type="submit"
+              className="login__modal-logIn"
+            >
               Log in
             </button>
-            <button onClick={handleRegister} type="button" className="login__modal-signUp">
+            <button
+              onClick={handleRegister}
+              type="button"
+              className="login__modal-signUp"
+            >
               Sign Up
             </button>
           </div>

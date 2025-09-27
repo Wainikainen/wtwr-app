@@ -48,9 +48,9 @@ function Header({
               </div>
             ) : (
               <img
-              onError={() => {
-                setImageError(true)
-              }}
+                onError={() => {
+                  setImageError(true);
+                }}
                 src={currentUser?.avatar}
                 alt="USER IMAGE"
                 className="header__user-img"

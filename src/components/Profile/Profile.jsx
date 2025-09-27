@@ -7,12 +7,13 @@ const Profile = ({
   handleOpenItemModal,
   handleAddGarmentModal,
   handleEditProfileModal,
-  handleSignOut
+  handleSignOut,
 }) => {
   return (
     <main className="profile">
-      <SideBar handleEditProfileModal={handleEditProfileModal}
-      handleSignOut={handleSignOut}
+      <SideBar
+        handleEditProfileModal={handleEditProfileModal}
+        handleSignOut={handleSignOut}
       />
       <ClothesSection
         clothingItems={clothingItems}

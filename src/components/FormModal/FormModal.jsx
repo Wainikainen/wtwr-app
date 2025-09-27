@@ -40,7 +40,11 @@ function FormModal({ isOpen, onClose, handleSubmit }) {
           className="form__modal-close"
           onClick={onClose}
         ></button>
-        <form  ref={formRef} onSubmit={handleFormSubmit} className="form__modal-inputs">
+        <form
+          ref={formRef}
+          onSubmit={handleFormSubmit}
+          className="form__modal-inputs"
+        >
           <label htmlFor="username" className="form__modal-label">
             Name
           </label>
@@ -121,7 +125,11 @@ function FormModal({ isOpen, onClose, handleSubmit }) {
               </label>
             </div>
           </fieldset>
-          <button  disabled={!isValid} type="submit" className="form__modal-submit">
+          <button
+            disabled={!isValid}
+            type="submit"
+            className="form__modal-submit"
+          >
             Add garment
           </button>
         </form>

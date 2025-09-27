@@ -4,14 +4,13 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { editProfile } from "../../utils/api";
 import { useForm } from "../../hooks/useForm";
 
-
 function EditProfileModal({ isOpen, onClose }) {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
 
-    const { isValid, formRef, setValues, values, handleChange } = useForm({
-        name: "",
-        avatar: ""
-    })  
+  const { isValid, formRef, setValues, values, handleChange } = useForm({
+    name: "",
+    avatar: "",
+  });
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -27,12 +26,10 @@ function EditProfileModal({ isOpen, onClose }) {
     if (currentUser && isOpen) {
       setValues({
         name: currentUser.name,
-        avatar: ""
-      })
-  }
-},[currentUser,isOpen,setValues]);
-
-
+        avatar: "",
+      });
+    }
+  }, [currentUser, isOpen, setValues]);
 
   return (
     <div className={`editProfile__modal ${isOpen ? "modal_is-opened" : ""}`}>
@@ -74,13 +71,13 @@ function EditProfileModal({ isOpen, onClose }) {
             onChange={handleChange}
             required
           />
-            <button
-              disabled={!isValid}
-              type="submit"
-              className="editProfile__modal-save"
-            >
-              Save Changes!!
-            </button>
+          <button
+            disabled={!isValid}
+            type="submit"
+            className="editProfile__modal-save"
+          >
+            Save Changes!!
+          </button>
         </form>
       </div>
     </div>
