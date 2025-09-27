@@ -1,4 +1,4 @@
-import "./editProfileModal.css";
+import "./EditProfileModal.css";
 import { useContext, useEffect, useState } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { editProfile } from "../../utils/api";
