@@ -8,6 +8,7 @@ const Profile = ({
   handleAddGarmentModal,
   handleEditProfileModal,
   handleSignOut,
+  handleCardLike,
 }) => {
   return (
     <main className="profile">
@@ -19,6 +20,7 @@ const Profile = ({
         clothingItems={clothingItems}
         handleOpenItemModal={handleOpenItemModal}
         handleAddGarmentModal={handleAddGarmentModal}
+        onCardLike={handleCardLike}
       />
     </main>
   );

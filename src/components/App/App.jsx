@@ -14,6 +14,8 @@ import {
   getClothingItems,
   addClothingItem,
   deleteClothingItem,
+  addCardLike,
+  removeCardLike,
 } from "../../utils/api";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
@@ -83,17 +85,18 @@ function App() {
     setActiveModal("register-modal");
   }
 
-  function handleRegister(values, callback) {
-    signUp(values)
-      .then((values) => {
-        return login({ email: values.email, password: values.password }).then(
-          (data) => {
-            localStorage.setItem("jwt", data.token);
-            return validateToken(data.token).then((newUser) => {
-              callback(newUser);
-            });
-          }
-        );
+  function handleRegister(formValues, callback) {
+    signUp(formValues)
+      .then(() => {
+        return login({
+          email: formValues.email,
+          password: formValues.password,
+        }).then((data) => {
+          localStorage.setItem("jwt", data.token);
+          return validateToken(data.token).then((newUser) => {
+            callback(newUser);
+          });
+        });
       })
       .catch(console.error);
   }
@@ -114,8 +117,7 @@ function App() {
     const isLiked = likes.some((id) => id === currentUser._id);
 
     if (!isLiked) {
-      api
-        .addCardLike(_id, token)
+      addCardLike(_id, token)
         .then((updatedCard) => {
           setClothingItems((cards) =>
             cards.map((item) => (item._id === _id ? updatedCard : item))
@@ -123,8 +125,7 @@ function App() {
         })
         .catch(console.log);
     } else {
-      api
-        .removeCardLike(_id, token)
+      removeCardLike(_id, token)
         .then((updatedCard) => {
           setClothingItems((cards) =>
             cards.map((item) => (item._id === _id ? updatedCard : item))
@@ -213,6 +214,7 @@ function App() {
                     handleAddGarmentModal={handleAddGarmentModal}
                     handleDeleteModal={handleDeleteModal}
                     handleSignOut={handleSignOut}
+                    handleCardLike={handleCardLike}
                   />
                 </ProtectedRoute>
               }

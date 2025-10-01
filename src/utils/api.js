@@ -56,7 +56,7 @@ function addCardLike(itemId) {
       "Content-Type": "application/json",
     },
   }).then((res) =>
-    res.ok ? res.json() : Promise.reject(`Error${res.status}`)
+    res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
   );
 }
 
@@ -68,7 +68,9 @@ function removeCardLike(itemId) {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
-  }).then((res) => (res.ok ? res.json : Promise.reject(`Error ${res.status}`)));
+  }).then((res) =>
+    res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+  );
 }
 
 export {

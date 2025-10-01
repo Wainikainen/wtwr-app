@@ -7,10 +7,13 @@ const ClothesSection = ({
   clothingItems,
   handleOpenItemModal,
   handleAddGarmentModal,
+  onCardLike,
 }) => {
-const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
 
- const userItems = clothingItems.filter((item) => item.owner === currentUser?._id)
+  const userItems = clothingItems.filter(
+    (item) => item.owner === currentUser?._id
+  );
 
   return (
     <section className="clothes-section">
@@ -30,6 +33,7 @@ const { currentUser } = useContext(CurrentUserContext);
               key={item._id}
               data={item}
               onCardClick={handleOpenItemModal}
+              onCardLike={onCardLike}
             />
           );
         })}

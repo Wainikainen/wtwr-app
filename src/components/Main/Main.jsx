@@ -4,7 +4,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import { useContext } from "react";
 import CurrentTempScaleContext from "../../contexts/CurrentTempScaleContext";
 
-function Main({ clothingItems, handleOpenItemModal, weatherData }) {
+function Main({ clothingItems, handleOpenItemModal, weatherData, onCardLike }) {
   const { tempScale } = useContext(CurrentTempScaleContext);
   const filterCards = clothingItems.filter((item) =>
     item.weather.includes(weatherData.tempCondition)
@@ -24,6 +24,7 @@ function Main({ clothingItems, handleOpenItemModal, weatherData }) {
               key={item._id}
               data={item}
               onCardClick={handleOpenItemModal}
+              onCardLike={onCardLike}
             />
           );
         })}
