@@ -113,11 +113,10 @@
 }
 
 .register__modal-btns {
-    position: absolute;
     display: flex;
     gap: 12px;
     bottom: 0px;
-
+  margin-top: 32px;
 }
 
 .register__modal-signUp {
@@ -131,7 +130,6 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  position: relative;
 }
 
 .register__modal-signUp:disabled {
@@ -150,7 +148,6 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  position: relative;
 }
 
 .register__modal-submit:hover {

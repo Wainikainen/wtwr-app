@@ -113,11 +113,10 @@
 }
 
 .login__modal-btns {
-    position: absolute;
     display: flex;
     gap: 12px;
     bottom: 0px;
-
+  margin-top: 32px;
 }
 
 .login__modal-logIn {
@@ -131,7 +130,6 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  position: relative;
 }
 
 .login__modal-logIn:disabled {
@@ -150,7 +148,6 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  position: relative;
 }
 
 .login__modal-submit:hover {
