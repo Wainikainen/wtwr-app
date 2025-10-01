@@ -26,9 +26,10 @@ function ItemCard({ data, onCardClick, onCardLike }) {
   return (
     <li className="card">
       <div className="card__container">
-        <h2 className="card__title">{data.name}</h2>
-        <button className={likeButtonClass} onClick={handleLike}></button>
-
+        <div className="card__header">
+          <h2 className="card__title">{data.name}</h2>
+          <button className={likeButtonClass} onClick={handleLike}></button>
+        </div>
         <img
           onError={() => {
             setImageError(true);

@@ -7,9 +7,15 @@
   display: flex;
 }
 
+.card__header{
+  display: flex;
+  gap: 12px;
+  justify-self: anchor-center;
+  position: absolute;
+}
+
 .card__title {
   padding: 2px 12px;
-  position: absolute;
   font-weight: 700;
   font-size: 16px;
   color: #000000;
@@ -18,7 +24,6 @@
   width: fit-content;
   height: 24px;
   border-radius: 4px;
-  justify-self: anchor-center;
   align-content: center;
   height: 20px;
 }
@@ -34,15 +39,14 @@
 .card__like-btn_active {
   width: 18px;
   height: 15px;
-  position: absolute;
   cursor: pointer;
-  top: 17px;
-  right: 100px;
   border: none;
   background-color: transparent;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  position: relative;
+  top: 17px;
 }
 
 .card__like-btn {

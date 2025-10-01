@@ -1,4 +1,4 @@
-.form__modal {
+.modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -14,20 +14,19 @@
   transition: opacity 0.5s linear, visibility 0s linear 0.5s;
 }
 
-.form__modal.modal_is-opened {
+.modal.modal_is-opened {
   visibility: visible;
   opacity: 1;
   transition: opacity 0.5s linear;
 }
 
-.form__modal-container {
+.modal-container {
   background: white;
   padding: 20px;
   border-radius: 8px;
   max-width: 500px;
   width: 90%;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  height: 436px;
   width: 496px;
   border-radius: 20px;
   position: relative;
@@ -35,13 +34,13 @@
   box-sizing: border-box;
 }
 
-.form__modal-title {
+.modal-title {
   font-weight: 700;
   font-size: 16px;
   margin: 0;
 }
 
-.form__modal-close {
+.modal-close {
   position: absolute;
   top: 24px;
   right: 24px;
@@ -53,12 +52,12 @@
   background-color: transparent;
 }
 
-.form__modal-inputs {
+.modal-inputs {
   display: flex;
   flex-direction: column;
 }
 
-.form__modal-input {
+.modal-input {
   width: 440px;
   border: 1px;
   border-bottom: 1px solid black;
@@ -66,55 +65,54 @@
   height: 24px;
 }
 
-.form__modal-input:focus {
+.modal-input:focus {
   outline: none
 }
 
-.form__modal-label {
+.modal-label {
   font-weight: 700;
   font-size: 16px;
   margin: 24px 0 8px;
 }
 
-.form__modal-error {
+.modal-error {
   margin: 15px 0 0;
 }
 
-.form__modal-fieldset {
+.modal-fieldset {
   padding: 0;
   margin: 24px 0 32px;
   border: none;
 }
 
-.form__modal-legend {
+.modal-legend {
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 12px;
 }
 
-.form__modal-selections {
+.modal-selections {
   font-size: 16px;
   font-weight: 700;
   padding-bottom: 8px;
   color: gray;
 }
 
-.form__modal-selection {
+.modal-selection {
   cursor: pointer;
 }
 
-.form__modal-selections .form__modal-selection:checked ~ .form__modal-choice {
+.modal-selections .modal-selection:checked ~ .modal-choice {
   color: black;
 }
 
-.form__modal-choice {
+.modal-choice {
   padding-left: 8px;
 }
 
-.form__modal-submit {
+.modal-submit {
   width: 124px;
   height: 36px;
-  position: absolute;
   bottom: 36px;
   font-size: 16px;
   color: #ffffff;
@@ -125,6 +123,6 @@
   cursor: pointer;
 }
 
-.form__modal-submit:disabled{
+.modal-submit:disabled{
    background-color: rgba(0, 0, 0, 0.3);
 }
