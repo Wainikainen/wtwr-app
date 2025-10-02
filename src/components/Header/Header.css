@@ -40,6 +40,7 @@
 .header__user-img {
   height: 40px;
   width: 40px;
+  border-radius: 50%;
 }
 
 .header__link-profile {
