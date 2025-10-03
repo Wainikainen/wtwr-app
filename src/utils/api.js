@@ -1,7 +1,10 @@
 import { headersWithToken } from "./handleResponse";
 import { processResponse } from "./handleResponse";
 
-export const baseUrl = "http://localhost:3001";
+const baseUrl = process.env.NODE_ENV === "production"
+  ? "https://api.what2wear.twilightparadox.com"
+  : "http://localhost:3001";
+
 
 function getClothingItems() {
   return fetch(`${baseUrl}/items`).then(processResponse);
@@ -51,4 +54,5 @@ export {
   editProfile,
   addCardLike,
   removeCardLike,
+  baseUrl
 };
