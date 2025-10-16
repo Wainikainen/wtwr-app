@@ -13,6 +13,6 @@ Developed a full-stack wardrobe management application that provides personalize
 - Backend: Node.js, Express, MongoDB (link below)
 
 ## Backend Repository
-The backend for this project can be found at [here](git@github.com:Wainikainen/wtwr-express.git)
+The backend for this project can be found [here](https://github.com/Wainikainen/wtwr-express.git);
 
 
